@@ -1,7 +1,11 @@
 import { FastifyInstance, FastifyPluginAsync, FastifyReply, FastifyRequest } from 'fastify'
-import {  loginController, registerController } from '../controllers/auth.controller'
+import { loginController, registerController } from '../controllers/auth.controller'
 
 const authRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
+  fastify.get('/verify', { preHandler: [fastify.authenticate] }, async (req: FastifyRequest, reply: FastifyReply) => {
+    return reply.status(200).send({ user: req.user })
+  })
+
   fastify.route({
     method: 'POST',
     url: '/register',
@@ -32,6 +36,15 @@ const authRoutes: FastifyPluginAsync = async (fastify: FastifyInstance) => {
           password: { type: 'string', minLength: 6 }
         },
         required: ['email', 'password']
+      },
+      response: {
+        200: {
+          description: 'Successful login',
+          type: 'object',
+          properties: {
+            token: { type: 'string' }
+          }
+        }
       }
     },
     handler: async (req: FastifyRequest, reply: FastifyReply) => {
