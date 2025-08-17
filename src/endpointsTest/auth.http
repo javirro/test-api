@@ -3,11 +3,20 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-  "username": "admin",
-  "password": "1234"
+  "email": "javirrof@example.com",
+  "password": "pruebas123"
 }
 
+### Register new user 
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "username": "javirrof",
+  "email": "javirrof@example.com",
+  "password": "pruebas123"
+}
 
 ### get user profile
 GET http://localhost:3000/user/me
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNzU1MzU2NTMwfQ.BWHhXy2YKewkmGnT2Cc8LDfx9Sgn23d4a3Ay5AvGZH4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imphdmlycm9mQGV4YW1wbGUuY29tIiwicm9sZSI6InVzZXIiLCJ1c2VybmFtZSI6Imphdmlycm9mIiwiaWF0IjoxNzU1NDIxNjQyfQ.SWVuxCdfrT8JO8pSFR-l6nOhz9im-GUaz579pa0JCWw

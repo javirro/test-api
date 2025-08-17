@@ -11,7 +11,7 @@ declare module 'fastify' {
 }
 
 const postgresPlugin: FastifyPluginAsync = fp(async (fastify) => {
-  fastify.register(import('@fastify/postgres'), {
+  await fastify.register(import('@fastify/postgres'), {
     connectionString: process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/devDB'
   })
 

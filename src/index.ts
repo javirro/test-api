@@ -1,6 +1,7 @@
 import { startFastifyServer } from './fastify'
-import 'dotenv/config'; // auto-loads .env
+import dotenv from 'dotenv'
 
+dotenv.config()
 
 console.log('Hello, world!')
 
