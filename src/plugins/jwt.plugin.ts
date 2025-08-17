@@ -1,7 +1,10 @@
 import fp from 'fastify-plugin'
 import { FastifyPluginAsync, FastifyRequest } from 'fastify'
+import { Role } from '../types/user'
 
 interface JwtPayload {
+  email: string
+  role: Role
   username: string
 }
 
@@ -12,6 +15,7 @@ declare module 'fastify' {
   }
 }
 
+// dinamic import for module @fastify/jwt. It will help to make difference between dev and prod environment
 const jwtAuthPlugin: FastifyPluginAsync = fp(async (fastify) => {
   // Register fastify-jwt
   fastify.register(import('@fastify/jwt'), {

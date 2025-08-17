@@ -2,10 +2,13 @@ import Fastify, { FastifyInstance } from 'fastify'
 import jwtAuthPlugin from './plugins/jwt.plugin'
 import authRoutes from './routes/auth.routes'
 import userRoutes from './routes/user.routes'
+import postgresPlugin from './plugins/postgres.plugin'
 
 const fastify: FastifyInstance = Fastify({
   logger: true
 })
+
+fastify.register(postgresPlugin)
 
 fastify.register(jwtAuthPlugin)
 
