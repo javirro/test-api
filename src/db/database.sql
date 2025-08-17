@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE TYPE USER_ROLE as ENUM ('user', 'admin');
 CREATE TABLE IF NOT EXISTS users (
